@@ -1,10 +1,22 @@
 <main>
-  <div class="px-4 py-5 text-center">
-    <h1 class="display-5 fw-bold">Angular app</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">
-        Bienvenid@ a mi primera app en angular!
-      </p> 
-    </div>
+  <div class="container mt-3 table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="col">#</th>
+          <th class="col">Alumno</th>
+          <th class="col">Nota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let alumno of alumnos">
+          <tr [ngClass]="alumno.nota < 6 ? 'table-danger' : 'table-success'">
+            <th scope="row">{{ alumno.id }}</th>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ alumno.nota }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
 </main>
