@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContenidoComponent } from './contenido/contenido.component';
+import { GrillaComponent } from './grilla/grilla.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     MenuComponent,
-    ContenidoComponent
+    ContenidoComponent,
+    GrillaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
