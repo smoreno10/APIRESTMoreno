@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { alumnos } from '../data/alumnos'
-import { GrillaComponent } from '../grilla/grilla.component';
+import alumnos from '../data/alumnos.json';
+import { Alumno }  from '../alumno/alumno'
+import { AlumnoComponent } from '../alumno/alumno.component';
 
 @Component({
   selector: 'app-contenido',
@@ -8,19 +9,56 @@ import { GrillaComponent } from '../grilla/grilla.component';
   styleUrls: ['./contenido.component.css']
 })
 
-export class ContenidoComponent implements AfterViewInit {
-  public mensaje: string = "Bienvenid@ a mi primera app en angular!"
-  alumnos: any[] = alumnos;
-  @ViewChild('grillaAlumnos' ,{static: false}) grillaAlumnos: GrillaComponent | undefined 
+export class ContenidoComponent implements OnInit {  
+  constructor() { }
+  @ViewChild(AlumnoComponent, { static: true }) myFormRef = {} as  AlumnoComponent;
 
-  constructor() {  
-  }
-  
-  ngAfterViewInit(): void {
-    console.log(this.grillaAlumnos)
+  alumnos: Alumno[] = alumnos;
+
+  ngOnInit(): void {
   }
 
-  clickListener(valor: any) {
-    console.log(valor)
+  clickListener(alumno: Alumno) {
+    this.myFormRef.setForm(alumno);
   }
+
+  eliminarListener(alumno: Alumno) {
+    this.alumnos = this.alumnos.filter(a => a.dni != alumno.dni);
+  }
+
+  guardarListener(alumno: Alumno) {
+    this.guardar(alumno)
+  }
+
+
+  guardar(alumno: Alumno) {
+    if (this.alumnos.some(a => a.dni == alumno.dni )) {
+      this.updatear(alumno)
+    } else {
+      this.insertar(alumno)
+    }
+  }
+
+  updatear(alumno: Alumno) {
+    this.alumnos = this.alumnos.map((a) => {
+      if (a.dni == alumno.dni) {
+        return alumno 
+      } else {
+        return a
+      }
+    })
+  }
+
+  insertar(alumno: Alumno) {
+    this.alumnos.push(alumno)
+  }
+
 }
+
+
+
+
+
+
+
+

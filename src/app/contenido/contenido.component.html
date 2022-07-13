@@ -1,3 +1,9 @@
-<main>
-  <app-grilla #grillaAlumnos [datos]="alumnos" (clickEvent)="clickListener($event)"></app-grilla>
-</main>
+<app-alumno
+  (eliminarEvent)="eliminarListener($event)"
+  (guardarEvent)="guardarListener($event)"
+></app-alumno>
+<app-grilla
+  [datos]="alumnos"
+  [titulo]="'Alumnos'"
+  (clickEvent)="clickListener($event)"
+></app-grilla>

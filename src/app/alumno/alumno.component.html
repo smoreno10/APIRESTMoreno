@@ -1,0 +1,35 @@
+<div class="container">
+    <form class="row g-3 mt-3" [formGroup]="Alumnoform" (ngSubmit) = "onSubmit()">
+      <div class="col-md-3">
+        <label for="dni" class="form-label">Dni</label>
+        <input type="number" class="form-control" formControlName="dni" />
+        <label class="text-danger" *ngIf="this.Alumnoform.get('dni')?.errors?.['required'] && this.Alumnoform.touched">* dni obligatorio</label>  
+      </div>
+      <div class="col-md-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre" />
+        <label class="text-danger" *ngIf="this.Alumnoform.get('nombre')?.errors?.['required'] && this.Alumnoform.touched">* nombre obligatorio</label>
+      </div>
+      <div class="col-md-3">
+        <label for="faixa" class="form-label">Faixa</label>
+        <select formControlName="faixa" class="form-select">
+          <option>Blanca</option>
+          <option>Azul</option>
+          <option>Roxa</option>
+          <option>Marron</option>
+          <option>Negra</option>
+        </select>
+        <label class="text-danger" *ngIf="this.Alumnoform.get('faixa')?.errors?.['required'] && this.Alumnoform.touched">* faixa obligatorio</label>
+      </div>
+      <div class="col-md-3">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="number" class="form-control" formControlName="edad" />
+        <label class="text-danger" *ngIf="this.Alumnoform.get('edad')?.errors?.['required'] && this.Alumnoform.touched">* edad obligatorio</label>      
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Guardar</button>&nbsp;
+        <button type="button" class="btn btn-danger" (click)="eliminar()">Eliminar</button>&nbsp; 
+        <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>&nbsp;     
+      </div>   
+    </form>
+  </div>
