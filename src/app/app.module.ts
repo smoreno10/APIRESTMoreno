@@ -20,7 +20,7 @@ import { AlumnoComponent } from './alumno/alumno.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

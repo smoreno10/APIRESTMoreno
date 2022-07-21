@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlumnosService } from '../servicios/alumnos.service';
 import { Alumno }  from './alumno'
 
 @Component({
@@ -9,7 +10,10 @@ import { Alumno }  from './alumno'
 })
 
 export class AlumnoComponent implements OnInit {
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    public alumnosSs: AlumnosService
+    ) { }
 
   @Output() guardarEvent = new EventEmitter<Alumno>()
   @Output() eliminarEvent = new EventEmitter<Alumno>()

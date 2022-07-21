@@ -1,6 +1,6 @@
 <app-alumno
-  (eliminarEvent)="eliminarListener($event)"
-  (guardarEvent)="guardarListener($event)"
+  (eliminarEvent)="alumnosSs.eliminar($event)"
+  (guardarEvent)="alumnosSs.guardar($event)"
 ></app-alumno>
 <app-grilla
   [datos]="alumnos"

@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import alumnos from '../data/alumnos.json';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+// import alumnos from '../data/alumnos.json';
 import { Alumno }  from '../alumno/alumno'
 import { AlumnoComponent } from '../alumno/alumno.component';
+import { AlumnosService } from '../servicios/alumnos.service';
 
 @Component({
   selector: 'app-contenido',
@@ -9,48 +11,27 @@ import { AlumnoComponent } from '../alumno/alumno.component';
   styleUrls: ['./contenido.component.css']
 })
 
-export class ContenidoComponent implements OnInit {  
-  constructor() { }
+export class ContenidoComponent implements OnInit, OnDestroy {  
+  constructor(
+    public alumnosSs: AlumnosService
+  ) { }
+
   @ViewChild(AlumnoComponent, { static: true }) myFormRef = {} as  AlumnoComponent;
 
-  alumnos: Alumno[] = alumnos;
+  alumnos: Alumno[] = [];
+  suscripcion: Subscription = new Subscription;
 
   ngOnInit(): void {
+    this.alumnosSs.alumnos$
+    .subscribe(res => this.alumnos = res)
   }
 
   clickListener(alumno: Alumno) {
     this.myFormRef.setForm(alumno);
   }
 
-  eliminarListener(alumno: Alumno) {
-    this.alumnos = this.alumnos.filter(a => a.dni != alumno.dni);
-  }
-
-  guardarListener(alumno: Alumno) {
-    this.guardar(alumno)
-  }
-
-
-  guardar(alumno: Alumno) {
-    if (this.alumnos.some(a => a.dni == alumno.dni )) {
-      this.updatear(alumno)
-    } else {
-      this.insertar(alumno)
-    }
-  }
-
-  updatear(alumno: Alumno) {
-    this.alumnos = this.alumnos.map((a) => {
-      if (a.dni == alumno.dni) {
-        return alumno 
-      } else {
-        return a
-      }
-    })
-  }
-
-  insertar(alumno: Alumno) {
-    this.alumnos.push(alumno)
+  ngOnDestroy(): void {
+    this.suscripcion.unsubscribe();
   }
 
 }
