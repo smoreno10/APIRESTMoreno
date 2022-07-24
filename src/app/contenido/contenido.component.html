@@ -1,9 +1,13 @@
-<app-alumno
-  (eliminarEvent)="alumnosSs.eliminar($event)"
-  (guardarEvent)="alumnosSs.guardar($event)"
-></app-alumno>
+<div class="btn-group d-flex" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-blanca" (click)="filtrar('Blanca')">Blanca</button>
+  <button type="button" class="btn btn-azul" (click)="filtrar('Azul')">Azul</button>
+  <button type="button" class="btn btn-roxa" (click)="filtrar('Roxa')">Roxa</button>
+  <button type="button" class="btn btn-marron" (click)="filtrar('Marron')">Marron</button>
+  <button type="button" class="btn btn-preta" (click)="filtrar('Preta')">Preta</button>
+  <button type="button" class="btn btn-success" (click)="filtrar('')">Todos</button>    
+</div>
 <app-grilla
-  [datos]="alumnos"
+  [datos]="(alumnosSs.alumnos$ | async)"
   [titulo]="'Alumnos'"
   (clickEvent)="clickListener($event)"
 ></app-grilla>

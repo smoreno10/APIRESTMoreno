@@ -9,8 +9,8 @@ export class GrillaComponent implements OnInit {
   constructor() { 
   }
 
-  @Input() titulo: string | undefined 
-  @Input() datos: any[] = [{}] 
+  @Input() titulo: string  
+  @Input() datos: any;
   @Output() clickEvent = new EventEmitter<any>()
 
   columnas: string[] = []

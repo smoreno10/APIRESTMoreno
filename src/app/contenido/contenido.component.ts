@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
-// import alumnos from '../data/alumnos.json';
+import { map, Subscription, of } from 'rxjs';
 import { Alumno }  from '../alumno/alumno'
 import { AlumnoComponent } from '../alumno/alumno.component';
 import { AlumnosService } from '../servicios/alumnos.service';
@@ -11,29 +10,33 @@ import { AlumnosService } from '../servicios/alumnos.service';
   styleUrls: ['./contenido.component.css']
 })
 
-export class ContenidoComponent implements OnInit, OnDestroy {  
+export class ContenidoComponent implements OnInit {
+
   constructor(
     public alumnosSs: AlumnosService
   ) { }
 
   @ViewChild(AlumnoComponent, { static: true }) myFormRef = {} as  AlumnoComponent;
-
-  alumnos: Alumno[] = [];
   suscripcion: Subscription = new Subscription;
-
+  
   ngOnInit(): void {
-    this.alumnosSs.alumnos$
-    .subscribe(res => this.alumnos = res)
+    this.alumnosSs.alumnos$ = of(this.alumnosSs.alumnosDb)    
   }
 
   clickListener(alumno: Alumno) {
     this.myFormRef.setForm(alumno);
   }
 
-  ngOnDestroy(): void {
-    this.suscripcion.unsubscribe();
+  filtrar(value: string) {
+    if (value != '') {
+      this.alumnosSs.alumnos$ = of(this.alumnosSs.alumnosDb)    
+      .pipe(
+        map(res => res.filter(a => a.faixa == value)) 
+      )
+    } else {
+      this.alumnosSs.alumnos$ = of(this.alumnosSs.alumnosDb)    
+    }
   }
-
 }
 
 
