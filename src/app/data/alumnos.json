@@ -1,8 +1,0 @@
-
-[
-    {"dni": 40000000, "nombre": "Ibarra, Enzo", "faixa": "Blanca", "edad": 23  },
-    {"dni": 35000000, "nombre": "Ibarra, Nicolas", "faixa": "Azul", "edad": 25  },
-    {"dni": 30000000, "nombre": "Moreno, Santiago", "faixa": "Roxa", "edad": 40  },
-    {"dni": 32000000, "nombre": "Perez, ALfredo", "faixa": "Azul", "edad": 28  },
-    {"dni": 45000000, "nombre": "Castro, Pricila", "faixa": "Azul", "edad": 17  }
-]

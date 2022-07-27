@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Alumno } from '../alumno/alumno';
-import { BehaviorSubject, from, Observable, of } from 'rxjs';
+import { Alumno } from '../interfaces/alumno';
+import { map, Observable, of } from 'rxjs';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class AlumnosService {
 
   public alumnosDb: any[] = [
     { dni: 40000000, nombre: 'Ibarra, Enzo', faixa: 'Blanca', edad: 23 },
-    { dni: 40000000, nombre: 'Lafranchi, Stefano', faixa: 'Blanca', edad: 25},    
+    { dni: 39000000, nombre: 'Lafranchi, Stefano', faixa: 'Blanca', edad: 25},    
     { dni: 35000000, nombre: 'Ibarra, Nicolas', faixa: 'Azul', edad: 25 },
     { dni: 30000000, nombre: 'Moreno, Santiago', faixa: 'Roxa', edad: 40 },
     { dni: 26000000, nombre: 'Buscemi, Emiliano', faixa: 'Marron', edad: 43 },    
@@ -24,29 +24,29 @@ export class AlumnosService {
 
   public alumnos$: Observable<any[]>;
 
-  eliminar(dato: Alumno) {
-    //this.alumnosDb? = this.alumnosDb?.filter((a) => a.dni != dato.dni);
+  eliminar(dni: any) {
+    this.alumnosDb = this.alumnosDb.filter((a) => a.dni != dni);
   }
 
   guardar(dato: Alumno) {
-    // if (this.alumnosDb.some((a) => a.dni == dato.dni)) {
-    //   this.updatear(dato);
-    // } else {
-    //   this.insertar(dato);
-    // }
+    if (this.alumnosDb.some((a) => a.dni == dato.dni)) {
+      this.updatear(dato);
+    } else {
+      this.insertar(dato);
+    }
   }
 
   updatear(dato: Alumno) {
-    // this.alumnosDb = this.alumnosDb.map((a) => {
-    //   if (a.dni == dato.dni) {
-    //     return dato;
-    //   } else {
-    //     return a;
-    //   }
-    // });
+    this.alumnosDb = this.alumnosDb.map((a) => {
+      if (a.dni == dato.dni) {
+        return dato;
+      } else {
+        return a;
+      }
+    });
   }
 
   insertar(dato: Alumno) {
-    //this.alumnosDb.push(dato);
+    this.alumnosDb.push(dato);
   }
 }

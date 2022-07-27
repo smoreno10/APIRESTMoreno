@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlumnosService } from '../servicios/alumnos.service';
-import { Alumno }  from './alumno'
+import { AlumnosService } from '../../servicios/alumnos.service';
+import { Alumno }  from '../../interfaces/alumno'
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, of } from 'rxjs';
 
 @Component({
   selector: 'app-alumno',
@@ -12,12 +14,13 @@ import { Alumno }  from './alumno'
 export class AlumnoComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
-    public alumnosSs: AlumnosService
+    public alumnosSs: AlumnosService,
+    private route: ActivatedRoute,
+    public router: Router
     ) { }
 
-  @Output() guardarEvent = new EventEmitter<Alumno>()
-  @Output() eliminarEvent = new EventEmitter<Alumno>()
-  
+  dni:any;
+
   Alumnoform: FormGroup = this.fb.group({
     dni: [null, [Validators.required]],
     nombre: [null, [Validators.required]],
@@ -26,7 +29,16 @@ export class AlumnoComponent implements OnInit {
   });
 
   ngOnInit(): void {
-   
+    this.dni = this.route.snapshot.paramMap.get("dni");
+    if (this.dni) {
+      this.Alumnoform.controls['dni'].disable();
+      of(this.alumnosSs.alumnosDb)
+      .pipe(
+        map(res => res.find(a => a.dni == this.dni))
+      ).subscribe(a => this.setForm(a))    
+    } else {
+      this.Alumnoform.controls['dni'].enable();
+    }
   }
 
   setForm(alumno: Alumno) {
@@ -43,13 +55,15 @@ export class AlumnoComponent implements OnInit {
   }
 
   guardar() {
-    this.guardarEvent.emit(this.Alumnoform.value)
+    this.alumnosSs.guardar(this.Alumnoform.value)
     this.limpiar()
+    this.router.navigateByUrl('')
   }
 
   eliminar() {
-    this.eliminarEvent.emit(this.Alumnoform.value)
+    this.alumnosSs.eliminar(this.dni)
     this.limpiar()
+    this.router.navigateByUrl('')
   }
 
   limpiar() {

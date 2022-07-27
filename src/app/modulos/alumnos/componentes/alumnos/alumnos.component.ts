@@ -1,19 +1,21 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { map, Subscription, of } from 'rxjs';
-import { Alumno }  from '../alumno/alumno'
+import { Alumno }  from '../../interfaces/alumno'
 import { AlumnoComponent } from '../alumno/alumno.component';
-import { AlumnosService } from '../servicios/alumnos.service';
+import { AlumnosService } from '../../servicios/alumnos.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-contenido',
-  templateUrl: './contenido.component.html',
-  styleUrls: ['./contenido.component.css']
+  selector: 'app-alumnos',
+  templateUrl: './alumnos.component.html',
+  styleUrls: ['./alumnos.component.css']
 })
 
-export class ContenidoComponent implements OnInit {
+export class AlumnosComponent implements OnInit {
 
   constructor(
-    public alumnosSs: AlumnosService
+    public alumnosSs: AlumnosService,
+    public router: Router
   ) { }
 
   @ViewChild(AlumnoComponent, { static: true }) myFormRef = {} as  AlumnoComponent;
@@ -24,7 +26,7 @@ export class ContenidoComponent implements OnInit {
   }
 
   clickListener(alumno: Alumno) {
-    this.myFormRef.setForm(alumno);
+    this.router.navigateByUrl(`alumno/${alumno.dni}`)
   }
 
   filtrar(value: string) {

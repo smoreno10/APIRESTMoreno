@@ -2,7 +2,7 @@
     <form class="row g-3 mt-3" [formGroup]="Alumnoform" (ngSubmit) = "onSubmit()">
       <div class="col-md-3">
         <label for="dni" class="form-label">Dni</label>
-        <input type="number" class="form-control" formControlName="dni" />
+        <input type="number" class="form-control" formControlName="dni"  />
         <label class="text-danger" *ngIf="this.Alumnoform.get('dni')?.errors?.['required'] && this.Alumnoform.touched">* dni obligatorio</label>  
       </div>
       <div class="col-md-3">
@@ -17,7 +17,7 @@
           <option>Azul</option>
           <option>Roxa</option>
           <option>Marron</option>
-          <option>Negra</option>
+          <option>Preta</option>
         </select>
         <label class="text-danger" *ngIf="this.Alumnoform.get('faixa')?.errors?.['required'] && this.Alumnoform.touched">* faixa obligatorio</label>
       </div>
