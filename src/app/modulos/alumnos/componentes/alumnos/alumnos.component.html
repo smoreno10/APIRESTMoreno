@@ -1,10 +1,10 @@
 <div class="btn-group d-flex" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-blanca" (click)="filtrar('Blanca')">Blanca</button>
-  <button type="button" class="btn btn-azul" (click)="filtrar('Azul')">Azul</button>
-  <button type="button" class="btn btn-roxa" (click)="filtrar('Roxa')">Roxa</button>
-  <button type="button" class="btn btn-marron" (click)="filtrar('Marron')">Marron</button>
-  <button type="button" class="btn btn-preta" (click)="filtrar('Preta')">Preta</button>
-  <button type="button" class="btn btn-success" (click)="filtrar('')">Todos</button>    
+  <button type="button" class="btn btn-blanca" (click)="filtrar('blanca')">blanca</button>
+  <button type="button" class="btn btn-azul" (click)="filtrar('azul')">azul</button>
+  <button type="button" class="btn btn-roxa" (click)="filtrar('roxa')">roxa</button>
+  <button type="button" class="btn btn-marron" (click)="filtrar('marron')">marron</button>
+  <button type="button" class="btn btn-preta" (click)="filtrar('preta')">preta</button>
+  <button type="button" class="btn btn-success" (click)="filtrar('')">todes</button>    
 </div>
 
 <div class="p-3 d-flex justify-content-end">
@@ -12,7 +12,8 @@
 </div>
    
 <app-grilla
-  [datos]="(alumnosSs.alumnos$ | async)"
+  [datos]="alumnos"
+  [columnas]= 'columnas'
   [titulo]="'Alumnos'"
   (clickEvent)="clickListener($event)"
 ></app-grilla>

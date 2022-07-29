@@ -11,12 +11,12 @@ export class GrillaComponent implements OnInit {
 
   @Input() titulo: string  
   @Input() datos: any;
-  @Output() clickEvent = new EventEmitter<any>()
+  @Input() columnas: string[];
 
-  columnas: string[] = []
+  @Output() clickEvent = new EventEmitter<any>()
   
   ngOnInit(): void {
-    this.columnas = Object.getOwnPropertyNames(this.datos[0])
+
   }
 
   raiseClick(td: any) {

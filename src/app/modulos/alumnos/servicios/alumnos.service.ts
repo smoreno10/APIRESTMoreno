@@ -1,52 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Alumno } from '../interfaces/alumno';
-import { map, Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Filtro } from '../../shared/interfaces/filtro';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlumnosService {
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
-  public alumnosDb: any[] = [
-    { dni: 40000000, nombre: 'Ibarra, Enzo', faixa: 'Blanca', edad: 23 },
-    { dni: 39000000, nombre: 'Lafranchi, Stefano', faixa: 'Blanca', edad: 25},    
-    { dni: 35000000, nombre: 'Ibarra, Nicolas', faixa: 'Azul', edad: 25 },
-    { dni: 30000000, nombre: 'Moreno, Santiago', faixa: 'Roxa', edad: 40 },
-    { dni: 26000000, nombre: 'Buscemi, Emiliano', faixa: 'Marron', edad: 43 },    
-    { dni: 33000000, nombre: 'Sarlaganga, Facundo', faixa: 'Roxa', edad: 38 },
-    { dni: 32000000, nombre: 'Perez, Alfredo', faixa: 'Azul', edad: 28 },
-    { dni: 45000000, nombre: 'Castro, Pricila', faixa: 'Azul', edad: 17 },
-    { dni: 25000000, nombre: 'Urigo, Marcos', faixa: 'Preta', edad: 48 },
-    { dni: 31000000, nombre: 'Demicheli, Franco', faixa: 'Preta', edad: 32 }
-  ];
+  private headers = new HttpHeaders().set("Content-Type", "application/json; charset=utf-8")
+  private urlGetAlumnos = environment.apiUrl + 'Alumnos/getAlumnos'; 
+  private urlGetAlumno = environment.apiUrl + 'Alumnos/getAlumno'; 
+  private urlSaveAlumno = environment.apiUrl + 'Alumnos/saveAlumno'; 
+  private urlDeleteAlumno = environment.apiUrl + 'Alumnos/deleteAlumno'; 
+  
 
-  public alumnos$: Observable<any[]>;
+  getAlumnos(filtros:Filtro[]) {
+    return this.http.post<any>(this.urlGetAlumnos, filtros, {headers: this.headers})
+ }
 
-  eliminar(dni: any) {
-    this.alumnosDb = this.alumnosDb.filter((a) => a.dni != dni);
+  getAlumno(filtros:Filtro[]) {
+    return this.http.post<any>(this.urlGetAlumno, filtros, {headers: this.headers})
   }
 
-  guardar(dato: Alumno) {
-    if (this.alumnosDb.some((a) => a.dni == dato.dni)) {
-      this.updatear(dato);
-    } else {
-      this.insertar(dato);
-    }
+  saveAlumno(dato: Alumno) {
+    return this.http.post<any>(this.urlSaveAlumno, dato, {headers: this.headers})
   }
 
-  updatear(dato: Alumno) {
-    this.alumnosDb = this.alumnosDb.map((a) => {
-      if (a.dni == dato.dni) {
-        return dato;
-      } else {
-        return a;
-      }
-    });
+  deleteAlumno(dato: Alumno) {
+    debugger
+    return this.http.post<any>(this.urlDeleteAlumno, dato, {headers: this.headers})
   }
 
-  insertar(dato: Alumno) {
-    this.alumnosDb.push(dato);
-  }
+
+
 }

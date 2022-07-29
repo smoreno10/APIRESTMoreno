@@ -7,7 +7,7 @@ import { AlumnosComponent } from './modulos/alumnos/componentes/alumnos/alumnos.
 const routes: Routes = [
   { path: '' , component: AlumnosComponent },
   { path: 'alumno', component: AlumnoComponent },
-  { path: 'alumno/:dni', component: AlumnoComponent },
+  { path: 'alumno/:id', component: AlumnoComponent },
   
 ];
 

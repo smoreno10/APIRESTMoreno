@@ -1,5 +1,5 @@
 export interface Alumno {
-    dni: number | null,
+    id: number | null,
     nombre: string | null,
     faixa: string | null,
     edad: number | null,

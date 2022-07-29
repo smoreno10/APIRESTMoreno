@@ -5,6 +5,7 @@ import { AlumnoComponent } from './componentes/alumno/alumno.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     AlumnosComponent,
