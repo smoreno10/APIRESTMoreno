@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { map, Subscription, of, from } from 'rxjs';
 import { Alumno }  from '../../interfaces/alumno'
-import { AlumnoComponent } from '../alumno/alumno.component';
 import { AlumnosService } from '../../servicios/alumnos.service';
 import { Router } from '@angular/router';
 import { Filtro } from '../../../shared/interfaces/filtro';
@@ -21,8 +19,6 @@ export class AlumnosComponent implements OnInit {
   public filtros: Filtro[] = [];
   public alumnos: any;
   public columnas: string[] = ['id', 'nombre', 'faixa', 'edad']
-
-  @ViewChild(AlumnoComponent, { static: true }) myFormRef = {} as  AlumnoComponent;
   
   ngOnInit(): void {
     this.alumnosSs.getAlumnos(this.filtros)

@@ -1,0 +1,31 @@
+<div class="container">
+    <!-- {{ getFormu() }} -->
+    <h3>Inscripción</h3>
+    <form class="mt-3 d-flex flex-column justify-content-center align-items-center" [formGroup]="inscripcionForm" (ngSubmit) = "onSubmit()">
+      <div class="col-md-6 col-12">
+        <label for="nombre" class="form-label">Fecha</label>
+        <input type="date" class="form-control" formControlName="fecha" />
+        <label class="text-danger" *ngIf="this.inscripcionForm.get('fecha')?.errors?.['required'] && this.inscripcionForm.touched">* fecha obligatorio</label>
+      </div>
+      <div class="col-md-6 col-12">
+        <label for="alumno" class="form-label">Alumno</label>
+        <select formControlName="alumno" class="form-select">
+            <option *ngFor="let alumno of alumnos" [ngValue]="alumno.id">{{alumno.nombre }}</option>
+        </select>
+        <label class="text-danger" *ngIf="this.inscripcionForm.get('alumno')?.errors?.['required'] && this.inscripcionForm.touched">* alumno obligatorio</label>
+      </div>
+      <div class="col-md-6 col-12">
+        <label for="curso" class="form-label">Curso</label>
+        <select formControlName="curso" class="form-select">
+            <option *ngFor="let curso of cursos" [ngValue]="curso.id">{{curso.nombre }}</option>
+        </select>
+        <label class="text-danger" *ngIf="this.inscripcionForm.get('curso')?.errors?.['required'] && this.inscripcionForm.touched">* curso obligatorio</label>
+      </div>
+      <div class="col-md-6 col-12 d-flex justify-content-center p-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>&nbsp;
+        <button type="button" class="btn btn-danger" (click)="eliminar()">Eliminar</button>&nbsp; 
+        <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>&nbsp;     
+      </div>   
+    </form>
+  </div>
+

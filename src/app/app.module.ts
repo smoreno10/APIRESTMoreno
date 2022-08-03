@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { SharedModule } from './modulos/shared/shared.module';
 import { AlumnosModule } from './modulos/alumnos/alumnos.module';
+import { CursosModule } from './modulos/cursos/cursos.module';
+import { InscripcionesModule } from './modulos/inscripciones/inscripciones.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { AlumnosModule } from './modulos/alumnos/alumnos.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    AlumnosModule 
+    AlumnosModule,
+    CursosModule,
+    InscripcionesModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

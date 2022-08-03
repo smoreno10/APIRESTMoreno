@@ -8,6 +8,7 @@ import { Filtro } from '../../shared/interfaces/filtro';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AlumnosService {
   constructor(
     private http: HttpClient
@@ -33,7 +34,6 @@ export class AlumnosService {
   }
 
   deleteAlumno(dato: Alumno) {
-    debugger
     return this.http.post<any>(this.urlDeleteAlumno, dato, {headers: this.headers})
   }
 

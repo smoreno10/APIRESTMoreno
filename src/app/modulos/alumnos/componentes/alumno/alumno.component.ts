@@ -51,17 +51,20 @@ export class AlumnoComponent implements OnInit {
   onSubmit() {
     this.alumnosSs.saveAlumno(this.Alumnoform.value)
     .subscribe(a => {
-      this.limpiar()
-      this.router.navigateByUrl('') 
+      this.volver()
     })
   }
 
   eliminar() {
     this.alumnosSs.deleteAlumno(this.Alumnoform.value)
     .subscribe(a => {
-      this.limpiar()
-      this.router.navigateByUrl('')  
+      this.volver()
     })
+  }
+
+  volver() {
+    this.limpiar()
+    this.router.navigateByUrl('')  
   }
 
   limpiar() {
