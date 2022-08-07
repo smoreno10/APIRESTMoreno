@@ -27,6 +27,7 @@ export class InscripcionComponent implements OnInit {
   ) { }
 
   public id:any;
+  public accion:any; 
   public filtros: Filtro[] = [];
   public alumnos: any;
   public cursos: any;
@@ -47,6 +48,7 @@ export class InscripcionComponent implements OnInit {
 
   obtenerInscripcion() {
     this.id = this.route.snapshot.paramMap.get("id");
+    this.accion = this.route.snapshot.paramMap.get("accion");  
     if (this.id) {
       this.filtros.push(new Filtro('id', this.id))
       this.inscripcionesSs.getInscipcion(this.filtros)
@@ -63,7 +65,7 @@ export class InscripcionComponent implements OnInit {
   }
 
   obtenerCursos() {
-    this.cursosSs.getCursos()
+    this.cursosSs.getCursos([])
     .subscribe(res => {
       this.cursos = res.datos
     })

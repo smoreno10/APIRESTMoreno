@@ -17,8 +17,8 @@ export class InscripcionesService {
   private urlSaveInscripcion = environment.apiUrl + 'Alumnos/saveInscripcion'; 
   private urlDeleteInscripcion = environment.apiUrl + 'Alumnos/deleteInscripcion'; 
 
-  getInscripciones() {
-    return this.http.post<any>(this.urlGetInscripciones, null , {headers: this.headers})
+  getInscripciones(filtros: Filtro[]) {
+    return this.http.post<any>(this.urlGetInscripciones, filtros , {headers: this.headers})
   }
 
   getInscipcion(filtros: Filtro[]) {

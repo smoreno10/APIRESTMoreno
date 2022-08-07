@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Filtro } from 'src/app/modulos/shared/interfaces/filtro';
 import { Inscripcion } from '../../interfaces/inscripcion';
 import { InscripcionesService } from '../../servicios/inscripciones.service';
 
@@ -15,17 +16,27 @@ export class InscripcionesComponent implements OnInit {
     public router: Router
   ) { }
 
+  @Input() alumno: any;
+  @Input() curso: any;
+
+  public filtros: Filtro[] = [];
   public inscripciones: any;
   public columnas: string[] = ['id', 'fecha', 'alumno', 'alumnoNombre', 'curso', 'cursoNombre']
 
   ngOnInit(): void {
-    this.inscripcionesSs.getInscripciones()
+    if (this.alumno) {
+      this.filtros.push(new Filtro('alumno', this.alumno))     
+    }
+    if (this.curso) {
+      this.filtros.push(new Filtro('curso', this.curso))     
+    }
+    this.inscripcionesSs.getInscripciones(this.filtros)
     .subscribe(data => { 
       this.inscripciones = data.datos 
     })
   }
 
   clickListener(inscripcion: Inscripcion) {
-    this.router.navigateByUrl(`inscripcion/${inscripcion.id}`)
+    this.router.navigateByUrl(`inscripcion/${inscripcion.id}/${inscripcion.accion}`)
   }
 }

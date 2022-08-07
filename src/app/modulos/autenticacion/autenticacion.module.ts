@@ -1,29 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CursoComponent } from './componentes/curso/curso.component';
-import { CursosComponent } from './componentes/cursos/cursos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { InscripcionesModule } from '../inscripciones/inscripciones.module';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { LoginComponent } from './componentes/login/login.component';
 
 @NgModule({
   declarations: [
-    CursoComponent,
-    CursosComponent
+    UsuariosComponent,
+    UsuarioComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
-    HttpClientModule,
-    InscripcionesModule
+    HttpClientModule
   ],
   exports: [
-    CursoComponent,
-    CursosComponent
+    UsuariosComponent,
+    UsuarioComponent,
+    LoginComponent
   ] 
 })
-export class CursosModule { }
+export class AutenticacionModule { }

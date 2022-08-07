@@ -18,8 +18,8 @@ export class CursosService {
   private urlSaveCurso = environment.apiUrl + 'Alumnos/saveCurso'; 
   private urlDeleteCurso = environment.apiUrl + 'Alumnos/deleteCurso'; 
   
-  getCursos() {
-    return this.http.post<any>(this.urlGetCursos, null , {headers: this.headers})
+  getCursos(filtros: Filtro[]) {
+    return this.http.post<any>(this.urlGetCursos, filtros , {headers: this.headers})
   }
 
   getCurso(filtros: Filtro[]) {

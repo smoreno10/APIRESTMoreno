@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { InscripcionesModule } from '../inscripciones/inscripciones.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    InscripcionesModule
   ],
   exports: [
     AlumnosComponent,

@@ -1,15 +1,32 @@
 <div class="container mt-3 table-responsive">
-    <h3>{{ titulo }}</h3>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th *ngFor="let columna of columnas" class="col">{{ columna }}</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let dato of datos" >
-            <td *ngFor="let columna of columnas" class="col" style="cursor: pointer;"  (click)="raiseClick(dato)" >{{ dato[columna] }}</td>
-          </tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>{{ titulo }}</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let columna of columnas" class="col">{{ columna }}</th>
+        <th *ngIf="verModificar" class="col"></th>
+        <th *ngIf="verEliminar" class="col"></th>
+        <th *ngIf="verDetalle" class="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of datos">
+        <td
+          *ngFor="let columna of columnas"
+          class="col"
+        >
+          {{ dato[columna] }}
+        </td>
+        <td *ngIf="verModificar" class="col" (click)="raiseClickModificar(dato)">
+          <button type="button" class="btn btn-link btn-sm">Modificar</button>
+        </td>
+        <td *ngIf="verEliminar" class="col" (click)="raiseClickEliminar(dato)">
+          <button type="button" class="btn btn-link btn-sm">Eliminar</button>
+        </td>
+        <td *ngIf="verDetalle" class="col" (click)="raiseClickDetalle(dato)">
+          <button type="button" class="btn btn-link btn-sm">Detalle</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

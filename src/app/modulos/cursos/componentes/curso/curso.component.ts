@@ -20,6 +20,7 @@ export class CursoComponent implements OnInit {
     ) { }
 
   public id:any;
+  public accion: any; 
   public filtros: Filtro[] = [];
 
   cursoform: FormGroup = this.fb.group({
@@ -29,6 +30,7 @@ export class CursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id");
+    this.accion = this.route.snapshot.paramMap.get('accion'); 
     if (this.id) {
       this.filtros.push(new Filtro('id', this.id))
       this.cursosSs.getCurso(this.filtros)

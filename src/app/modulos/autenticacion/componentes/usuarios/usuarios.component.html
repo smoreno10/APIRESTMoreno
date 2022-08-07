@@ -1,0 +1,12 @@
+<div class="p-3 d-flex justify-content-end">
+    <button class="btn btn-primary" [routerLink]="['/usuario']" routerLinkActive="router-link-active" >Nuevo</button>
+  </div>
+     
+  <app-grilla
+    [datos]="usuarios"
+    [columnas]= 'columnas'
+    [titulo]="'Usuarios'"
+    [verModificar]="true" 
+    [verEliminar]="true"     
+    (clickEvent)="clickListener($event)"
+  ></app-grilla>

@@ -29,7 +29,7 @@ export class AlumnosComponent implements OnInit {
   }
 
   clickListener(alumno: Alumno) {
-    this.router.navigateByUrl(`alumno/${alumno.id}`)
+    this.router.navigateByUrl(`alumno/${alumno.id}/${alumno.accion}`)
   }
 
   filtrar(value: string) {

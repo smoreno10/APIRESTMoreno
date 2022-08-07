@@ -1,31 +1,54 @@
 <div class="container">
-    <h3>Alumno</h3>
-    <form class="mt-3 d-flex flex-column justify-content-center align-items-center" [formGroup]="Alumnoform" (ngSubmit) = "onSubmit()">
-      <div class="col-md-6 col-12">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" formControlName="nombre" />
-        <label class="text-danger" *ngIf="this.Alumnoform.get('nombre')?.errors?.['required'] && this.Alumnoform.touched">* nombre obligatorio</label>
-      </div>
-      <div class="col-md-6 col-12">
-        <label for="faixa" class="form-label">Faixa</label>
-        <select formControlName="faixa" class="form-select">
-          <option>blanca</option>
-          <option>azul</option>
-          <option>roxa</option>
-          <option>marron</option>
-          <option>preta</option>
-        </select>
-        <label class="text-danger" *ngIf="this.Alumnoform.get('faixa')?.errors?.['required'] && this.Alumnoform.touched">* faixa obligatorio</label>
-      </div>
-      <div class="col-md-6 col-12">
-        <label for="edad" class="form-label">Edad</label>
-        <input type="number" class="form-control" formControlName="edad" />
-        <label class="text-danger" *ngIf="this.Alumnoform.get('edad')?.errors?.['required'] && this.Alumnoform.touched">* edad obligatorio</label>      
-      </div>
-      <div class="col-md-6 col-12 d-flex justify-content-center p-3">
-        <button type="submit" class="btn btn-primary">Guardar</button>&nbsp;
-        <button type="button" class="btn btn-danger" (click)="eliminar()">Eliminar</button>&nbsp; 
-        <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>&nbsp;     
-      </div>   
-    </form>
-  </div>
+  <h3>Alumno</h3>
+  <form
+    class="mt-3 d-flex flex-column justify-content-center align-items-center"
+    [formGroup]="Alumnoform"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="col-md-6 col-12">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre" />
+      <label
+        class="text-danger"
+        *ngIf="this.Alumnoform.get('nombre')?.errors?.['required'] && this.Alumnoform.touched"
+        >* nombre obligatorio</label
+      >
+    </div>
+    <div class="col-md-6 col-12">
+      <label for="faixa" class="form-label">Faixa</label>
+      <select formControlName="faixa" class="form-select">
+        <option>blanca</option>
+        <option>azul</option>
+        <option>roxa</option>
+        <option>marron</option>
+        <option>preta</option>
+      </select>
+      <label
+        class="text-danger"
+        *ngIf="this.Alumnoform.get('faixa')?.errors?.['required'] && this.Alumnoform.touched"
+        >* faixa obligatorio</label
+      >
+    </div>
+    <div class="col-md-6 col-12">
+      <label for="edad" class="form-label">Edad</label>
+      <input type="number" class="form-control" formControlName="edad" />
+      <label
+        class="text-danger"
+        *ngIf="this.Alumnoform.get('edad')?.errors?.['required'] && this.Alumnoform.touched"
+        >* edad obligatorio</label
+      >
+    </div>
+    <div class="col-md-6 col-12 d-flex justify-content-center p-3">
+      <button *ngIf="accion != 'Detalle' && accion != 'Eliminar'" type="submit" class="btn btn-primary">
+        Guardar</button>
+      &nbsp;
+      <button *ngIf="accion != 'Detalle' && accion == 'Eliminar'" type="button" class="btn btn-danger" (click)="eliminar()">
+        Eliminar</button
+      >&nbsp;
+      <button *ngIf="accion != 'Detalle' && accion != 'Eliminar'" type="button" class="btn btn-primary" (click)="limpiar()">
+        Limpiar</button
+      >&nbsp;
+    </div>
+  </form>
+  <app-inscripciones *ngIf="accion == 'Detalle'" [alumno]="id"></app-inscripciones>
+</div>

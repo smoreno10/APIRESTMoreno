@@ -5,5 +5,6 @@ export interface Inscripcion {
     alumno: number | null,
     curso: number | null,
     alumnoNombre: string | null,
-    cursoNombre: string | null
+    cursoNombre: string | null,
+    accion: string | null
   }

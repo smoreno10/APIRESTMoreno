@@ -1,0 +1,27 @@
+<div class="container">
+    <h3>Usuario</h3>
+    <form class="mt-3 d-flex flex-column justify-content-center align-items-center" [formGroup]="usuarioForm" (ngSubmit) = "onSubmit()">
+      <div class="col-md-6 col-12">
+        <label for="user" class="form-label">user</label>
+        <input type="text" class="form-control" formControlName="user" />
+        <label class="text-danger" *ngIf="this.usuarioForm.get('user')?.errors?.['required'] && this.usuarioForm.touched">* login obligatorio</label>
+      </div>    
+      <div class="col-md-6 col-12">
+        <label for="pass" class="form-label">Pass</label>
+        <input type="text" class="form-control" formControlName="pass" />
+        <label class="text-danger" *ngIf="this.usuarioForm.get('pass')?.errors?.['required'] && this.usuarioForm.touched">* pass obligatorio</label>
+      </div> 
+      <div class="col-md-6 col-12">
+          <input class="form-check-input" type="checkbox" value="" formControlName="admin">
+          <label class="form-check-label" for="admin">
+            Admin 
+          </label>
+      </div>     
+      <div class="col-md-6 col-12 d-flex justify-content-center p-3">
+        <button *ngIf="accion != 'Eliminar'" type="submit" class="btn btn-primary">Guardar</button>&nbsp;
+        <button *ngIf="accion == 'Eliminar'"type="button" class="btn btn-danger" (click)="eliminar()">Eliminar</button>&nbsp; 
+        <button *ngIf="accion != 'Eliminar'" type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>&nbsp;     
+      </div>   
+    </form>
+  </div>
+

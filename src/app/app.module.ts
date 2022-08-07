@@ -8,6 +8,7 @@ import { SharedModule } from './modulos/shared/shared.module';
 import { AlumnosModule } from './modulos/alumnos/alumnos.module';
 import { CursosModule } from './modulos/cursos/cursos.module';
 import { InscripcionesModule } from './modulos/inscripciones/inscripciones.module';
+import { AutenticacionModule } from './modulos/autenticacion/autenticacion.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { InscripcionesModule } from './modulos/inscripciones/inscripciones.modul
     SharedModule,
     AlumnosModule,
     CursosModule,
-    InscripcionesModule 
+    InscripcionesModule,
+    AutenticacionModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

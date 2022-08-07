@@ -12,6 +12,9 @@ export class GrillaComponent implements OnInit {
   @Input() titulo: string  
   @Input() datos: any;
   @Input() columnas: string[];
+  @Input() verModificar: boolean  
+  @Input() verEliminar: boolean 
+  @Input() verDetalle: boolean 
 
   @Output() clickEvent = new EventEmitter<any>()
   
@@ -19,8 +22,18 @@ export class GrillaComponent implements OnInit {
 
   }
 
-  raiseClick(td: any) {
-    this.clickEvent.emit(td)
+  raiseClickModificar(td: any) {
+    this.clickEvent.emit({...td, accion: "Modificar"})
   }
+
+  raiseClickEliminar(td: any) {
+    this.clickEvent.emit({...td, accion: "Eliminar"})
+  }
+
+  raiseClickDetalle(td: any) {
+    this.clickEvent.emit({...td, accion: "Detalle"})
+  }
+
+
   
 }

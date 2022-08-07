@@ -1,10 +1,19 @@
 <div class="p-3 d-flex justify-content-end">
-    <button class="btn btn-primary" [routerLink]="['/inscripcion']" routerLinkActive="router-link-active" >Nuevo</button>
-  </div>
-     
-  <app-grilla
-    [datos]="inscripciones"
-    [columnas]= 'columnas'
-    [titulo]="'Inscripciones'"
-    (clickEvent)="clickListener($event)"
-  ></app-grilla>
+  <button
+    class="btn btn-primary"
+    [routerLink]="['/inscripcion']"
+    routerLinkActive="router-link-active"
+    *ngIf="!alumno && !curso"
+  >
+    Nueva
+  </button>
+</div>
+
+<app-grilla
+  [datos]="inscripciones"
+  [columnas]="columnas"
+  [titulo]="'Inscripciones'"
+  (clickEvent)="clickListener($event)"
+  [verModificar]="true"
+  [verEliminar]="true"
+></app-grilla>
