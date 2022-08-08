@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
      this.usuarioSs.login(this.loginForm.value)
      .subscribe(res => {
       res.datos? sessionStorage.setItem('usuario', JSON.stringify(res.datos)): undefined
+      this.loginForm.reset()
      })
   }
 

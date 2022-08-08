@@ -3,6 +3,7 @@ import { Alumno }  from '../../interfaces/alumno'
 import { AlumnosService } from '../../servicios/alumnos.service';
 import { Router } from '@angular/router';
 import { Filtro } from '../../../shared/interfaces/filtro';
+import { UsuariosService } from 'src/app/modulos/autenticacion/servicios/usuarios.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -13,7 +14,8 @@ import { Filtro } from '../../../shared/interfaces/filtro';
 export class AlumnosComponent implements OnInit {
   constructor(
     public alumnosSs: AlumnosService,
-    public router: Router
+    public router: Router,
+    public usuarioSs: UsuariosService
   ) { }
 
   public filtros: Filtro[] = [];

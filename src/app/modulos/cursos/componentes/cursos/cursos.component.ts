@@ -14,7 +14,7 @@ import { CursosService } from '../../servicios/cursos.service';
 export class CursosComponent implements OnInit {
   constructor(
     public cursosSs: CursosService,
-    public usuariosSs: UsuariosService,
+    public usuarioSs: UsuariosService,
     public router: Router
   ) { }
 

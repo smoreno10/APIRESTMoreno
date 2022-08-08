@@ -7,7 +7,7 @@
   <button type="button" class="btn btn-success" (click)="filtrar('')">todes</button>    
 </div>
 
-<div class="p-3 d-flex justify-content-end">
+<div *ngIf="usuarioSs.usuario().admin" class="p-3 d-flex justify-content-end">
   <button class="btn btn-primary" [routerLink]="['/alumno']" routerLinkActive="router-link-active" >Nuevo</button>
 </div>
    
@@ -15,8 +15,8 @@
   [datos]="alumnos"
   [columnas]= 'columnas'
   [titulo]="'Alumnos'"
-  [verModificar]="true"
-  [verEliminar]="true"
+  [verModificar]="usuarioSs.usuario().admin"
+  [verEliminar]="usuarioSs.usuario().admin"
   [verDetalle]="true"
   (clickEvent)="clickListener($event)"
 ></app-grilla>

@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link"  aria-current="page" [routerLink]="['/alumnos']" routerLinkActive="router-link-active" >Alumnos</a>
+          <a class="nav-link"  aria-current="page" routerLink="alumnos" routerLinkActive="router-link-active" >Alumnos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  aria-current="page" [routerLink]="['/cursos']" routerLinkActive="router-link-active" >Cursos</a>
+          <a class="nav-link"  aria-current="page" routerLink="cursos" routerLinkActive="router-link-active" >Cursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  aria-current="page" [routerLink]="['/inscripciones']" routerLinkActive="router-link-active" >Inscripciones</a>         
+          <a class="nav-link"  aria-current="page" routerLink="inscripciones" routerLinkActive="router-link-active" >Inscripciones</a>         
         </li>
         <li class="nav-item" *ngIf="usuarioSs.usuario().admin">
-          <a class="nav-link"  aria-current="page" [routerLink]="['/usuarios']" routerLinkActive="router-link-active" >Usuarios</a>         
+          <a class="nav-link"  aria-current="page" routerLink="usuarios" routerLinkActive="router-link-active" >Usuarios</a>         
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-success" (click)="salir()">Salir</button>           

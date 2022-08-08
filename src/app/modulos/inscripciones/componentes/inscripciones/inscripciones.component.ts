@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/modulos/autenticacion/servicios/usuarios.service';
 import { Filtro } from 'src/app/modulos/shared/interfaces/filtro';
 import { Inscripcion } from '../../interfaces/inscripcion';
 import { InscripcionesService } from '../../servicios/inscripciones.service';
@@ -13,7 +14,8 @@ import { InscripcionesService } from '../../servicios/inscripciones.service';
 export class InscripcionesComponent implements OnInit {
   constructor(
     public inscripcionesSs: InscripcionesService,
-    public router: Router
+    public router: Router,
+    public usuarioSs: UsuariosService
   ) { }
 
   @Input() alumno: any;

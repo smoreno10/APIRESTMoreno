@@ -1,4 +1,4 @@
-<div class="p-3 d-flex justify-content-end">
+<div *ngIf="usuarioSs.usuario().admin" class="p-3 d-flex justify-content-end">
   <button
     class="btn btn-primary"
     [routerLink]="['/inscripcion']"
@@ -14,6 +14,6 @@
   [columnas]="columnas"
   [titulo]="'Inscripciones'"
   (clickEvent)="clickListener($event)"
-  [verModificar]="true"
-  [verEliminar]="true"
+  [verModificar]="usuarioSs.usuario().admin"
+  [verEliminar]="usuarioSs.usuario().admin"
 ></app-grilla>
