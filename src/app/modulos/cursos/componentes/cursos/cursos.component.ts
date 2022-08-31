@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuariosService } from 'src/app/modulos/autenticacion/servicios/usuarios.service';
+import { UsuariosService } from 'src/app/modulos/usuarios/servicios/usuarios.service';
 import { Filtro } from 'src/app/modulos/shared/interfaces/filtro';
 import { Curso } from '../../interfaces/curso';
 import { CursosService } from '../../servicios/cursos.service';
@@ -34,5 +34,5 @@ export class CursosComponent implements OnInit {
    }
 
   clickListener(curso: Curso) {
-    this.router.navigateByUrl(`curso/${curso.id}/${curso.accion}`)  }
+    this.router.navigateByUrl(`cursos/curso/${curso.id}/${curso.accion}`)  }
 }

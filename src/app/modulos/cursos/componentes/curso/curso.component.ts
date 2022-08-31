@@ -61,7 +61,7 @@ export class CursoComponent implements OnInit {
 
   volver() {
     this.limpiar()
-    this.router.navigateByUrl('cursos') 
+    this.router.navigateByUrl('/cursos/cursos') 
   }
 
   limpiar() {

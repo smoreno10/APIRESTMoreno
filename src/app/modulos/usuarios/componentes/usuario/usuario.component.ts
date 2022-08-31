@@ -67,7 +67,7 @@ export class UsuarioComponent implements OnInit {
 
   volver() {
     this.limpiar()
-    this.router.navigateByUrl('usuarios') 
+    this.router.navigateByUrl('/usuarios/usuarios') 
   }
 
   limpiar() {

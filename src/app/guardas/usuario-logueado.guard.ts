@@ -7,7 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UsuariosService } from '../modulos/autenticacion/servicios/usuarios.service';
+import { UsuariosService } from '../modulos/usuarios/servicios/usuarios.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +28,7 @@ export class UsuarioLogueadoGuard implements CanActivate {
     if (this.usuarioSs.usuario()) {
       respuesta = true;
     } else {
-      return this.router.navigateByUrl('login');
+      return this.router.navigateByUrl('');
     }
 
     return respuesta;

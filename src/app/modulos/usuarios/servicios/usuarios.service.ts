@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../interfaces/usuario';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +48,7 @@ export class UsuariosService {
   salir() {
     sessionStorage.removeItem('usuario');
     sessionStorage.clear();
+
   }
 
 }

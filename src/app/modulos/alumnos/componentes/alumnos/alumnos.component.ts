@@ -3,7 +3,7 @@ import { Alumno }  from '../../interfaces/alumno'
 import { AlumnosService } from '../../servicios/alumnos.service';
 import { Router } from '@angular/router';
 import { Filtro } from '../../../shared/interfaces/filtro';
-import { UsuariosService } from 'src/app/modulos/autenticacion/servicios/usuarios.service';
+import { UsuariosService } from 'src/app/modulos/usuarios/servicios/usuarios.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -27,11 +27,10 @@ export class AlumnosComponent implements OnInit {
     .subscribe(data => { 
       this.alumnos = data.datos 
     })
-
   }
 
   clickListener(alumno: Alumno) {
-    this.router.navigateByUrl(`alumno/${alumno.id}/${alumno.accion}`)
+    this.router.navigateByUrl(`alumnos/alumno/${alumno.id}/${alumno.accion}`)
   }
 
   filtrar(value: string) {

@@ -66,7 +66,7 @@ export class AlumnoComponent implements OnInit {
 
   volver() {
     this.limpiar();
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/alumnos/alumnos');
   }
 
   limpiar() {

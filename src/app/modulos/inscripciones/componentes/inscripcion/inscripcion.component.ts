@@ -96,7 +96,7 @@ export class InscripcionComponent implements OnInit {
 
   volver() {
     this.limpiar()
-    this.router.navigateByUrl('/inscripciones') 
+    this.router.navigateByUrl('/inscripciones/inscripciones') 
   }
 
   limpiar() {

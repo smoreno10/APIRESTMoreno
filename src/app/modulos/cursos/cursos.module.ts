@@ -4,9 +4,9 @@ import { CursoComponent } from './componentes/curso/curso.component';
 import { CursosComponent } from './componentes/cursos/cursos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { InscripcionesModule } from '../inscripciones/inscripciones.module';
+import { CursosRoutingModule } from './cursos-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +15,11 @@ import { InscripcionesModule } from '../inscripciones/inscripciones.module';
   ],
   imports: [
     CommonModule,
+    CursosRoutingModule,
+    InscripcionesModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule,
     HttpClientModule,
-    InscripcionesModule
   ],
   exports: [
     CursoComponent,

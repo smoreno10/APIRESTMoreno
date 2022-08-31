@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsuariosService } from './modulos/autenticacion/servicios/usuarios.service';
+import { UsuariosService } from './modulos/usuarios/servicios/usuarios.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { UsuariosService } from './modulos/autenticacion/servicios/usuarios.serv
 export class AppComponent {
 
   constructor(
-    public usuarioSs: UsuariosService
+     public usuarioSs: UsuariosService
     ) { }
 
   title = 'angular-app';

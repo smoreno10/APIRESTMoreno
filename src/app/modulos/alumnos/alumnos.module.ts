@@ -4,9 +4,9 @@ import { AlumnosComponent } from './componentes/alumnos/alumnos.component';
 import { AlumnoComponent } from './componentes/alumno/alumno.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { InscripcionesModule } from '../inscripciones/inscripciones.module';
+import { AlumnosRoutingModule } from './alumnos-routing.module';
 
 
 @NgModule({
@@ -16,11 +16,11 @@ import { InscripcionesModule } from '../inscripciones/inscripciones.module';
   ],
   imports: [
     CommonModule,
+    AlumnosRoutingModule,
+    InscripcionesModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule,
     HttpClientModule,
-    InscripcionesModule
   ],
   exports: [
     AlumnosComponent,
@@ -28,3 +28,4 @@ import { InscripcionesModule } from '../inscripciones/inscripciones.module';
   ] 
 })
 export class AlumnosModule { }
+

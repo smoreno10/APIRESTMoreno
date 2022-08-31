@@ -25,6 +25,6 @@ export class UsuariosComponent implements OnInit {
    }
 
   clickListener(usuario: Usuario) {
-    this.router.navigateByUrl(`usuario/${usuario.id}/${usuario.accion}`)
+    this.router.navigateByUrl(`/usuarios/usuario/${usuario.id}/${usuario.accion}`)
   }
 }

@@ -1,19 +1,27 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AutenticacionModule } from './modulos/autenticacion/autenticacion.module';
+import { MenuComponent } from './menu/menu.component';
+import { IngresoComponent } from './ingreso/ingreso.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenuComponent,
+    IngresoComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AutenticacionModule 
+    HttpClientModule,
+    ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
